@@ -58,6 +58,20 @@ namespace PeliRestApi.Controllers
         }
 
 
+        // Haku n-määrä eniten ladattua
+        // https://localhost:5001/api/pelit/ladatuimmat/2   <---- esim hausta 2 ladatuinta
+        [HttpGet]
+        [Route("ladatuimmat/{key}")]
+        public ActionResult GetMostLoadedGames(int key)
+        {
+            var pelit = db.Pelits.ToList();
+
+            var ladatuimmat = pelit.OrderByDescending(p => p.Lataukset).Take(key);
+
+            return Ok(pelit);
+        }
+
+
 
         // Post metodi jonka avulla lisätään uusi peli
         [HttpPost]
