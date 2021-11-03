@@ -30,7 +30,7 @@ namespace PeliRestApi
 
             services.AddCors(options =>
             {
-                options.AddPolicy("MyCorsPolicy",
+                options.AddPolicy("salliKaikki",
                 builder => builder.AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
@@ -49,7 +49,7 @@ namespace PeliRestApi
 
             app.UseRouting();
 
-            app.UseCors("MyCorsPolicy");
+            app.UseCors("salliKaikki");
 
             app.UseAuthorization();
 

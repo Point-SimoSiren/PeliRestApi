@@ -35,6 +35,17 @@ namespace PeliRestApi.Controllers
         }
 
 
+        // Haku genren mukaan genre id:llä
+        // https://localhost:5001/api/pelit/genreid/5   <---- esim jos haettaisiin genre id 5:lla
+        [HttpGet]
+        [Route("genreid/{key}")]
+        public ActionResult GetGamesByGenreId(int key)
+        {
+            var pelit = db.Pelits.Where(p => p.GenreId == key);
+
+            return Ok(pelit);
+        }
+
 
         // Post metodi jonka avulla lisätään uusi peli
         [HttpPost]
