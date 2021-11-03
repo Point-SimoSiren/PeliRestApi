@@ -46,6 +46,18 @@ namespace PeliRestApi.Controllers
             return Ok(pelit);
         }
 
+        // Haku alkaen ja päättyen julkaisuvuoden mukaan
+        // https://localhost:5001/api/pelit/year-from/2018/year-to/2020   <---- esim hausta
+        [HttpGet]
+        [Route("year-from/{from}/year-to/{to}")]
+        public ActionResult GetGamesByYear(int from, int to)
+        {
+            var pelit = db.Pelits.Where(p => p.Julkaisuvuosi >= from && p.Julkaisuvuosi <= to);
+
+            return Ok(pelit);
+        }
+
+
 
         // Post metodi jonka avulla lisätään uusi peli
         [HttpPost]
