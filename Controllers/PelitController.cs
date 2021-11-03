@@ -67,9 +67,15 @@ namespace PeliRestApi.Controllers
 
         // Poista peli
         [HttpDelete]
-        [Route("{id}")]
-        public ActionResult DeleteGame(int id)
+        [Route("{id}/{token}")]
+        public ActionResult DeleteGame(int id, string token)
         {
+            if (token != "Rtayi23tyP987ghX1")
+            {
+                return Unauthorized("Token is invalid or missing");
+            }
+
+
             Pelit peli = db.Pelits.Find(id);
 
             if (peli != null) // Jos peli löytyy
