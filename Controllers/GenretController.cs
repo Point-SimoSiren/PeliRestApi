@@ -17,7 +17,7 @@ namespace PeliRestApi.Controllers
         private static readonly pelidbContext db = new pelidbContext();
 
 
-        // Get metodi joka palauttaa pelidatan tietokannasta
+        // Get metodi joka palauttaa genret tietokannasta
         [HttpGet]
         public ActionResult GetAllGenres()
         {
@@ -27,7 +27,7 @@ namespace PeliRestApi.Controllers
         }
 
 
-        // Haku pelin nimellä
+        // Haku nimellä
         [HttpGet]
         [Route("{key}")]
         public ActionResult GetGenresByName(string key)
@@ -39,7 +39,7 @@ namespace PeliRestApi.Controllers
 
 
 
-        // Post metodi jonka avulla lisätään uusi peli
+        // Post metodi jonka avulla lisätään uusi genre
         [HttpPost]
         public ActionResult CreateNew([FromBody] Genret genre)
         {
@@ -48,7 +48,7 @@ namespace PeliRestApi.Controllers
                 db.Genrets.Add(genre);
                 db.SaveChanges();
 
-                return Ok("Lisättiin peli " + genre.Nimi);
+                return Ok("Lisättiin uusi genre nimellä: " + genre.Nimi);
             }
             catch (Exception e)
             {
