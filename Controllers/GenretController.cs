@@ -66,15 +66,21 @@ namespace PeliRestApi.Controllers
 
             if (genre != null) // Jos genre löytyy
             {
-                db.Genrets.Remove(genre);
-                db.SaveChanges();
-                return Ok("Genre '" + genre.Nimi + "' poistettu.");
+                try
+                {
+                    db.Genrets.Remove(genre);
+                    db.SaveChanges();
+                    return Ok("Genre '" + genre.Nimi + "' poistettu.");
+                }
+                catch(Exception e)
+                {
+                    return BadRequest("Pyyntö ei onnistunut. Onkohan tähän genreen laitettu pelejä?" + e);
+                }
             }
             else
             {
                 return NotFound("Genreä ei löydy id:llä " + id);
             }
-
         }
 
 
