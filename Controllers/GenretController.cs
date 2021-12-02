@@ -27,7 +27,7 @@ namespace PeliRestApi.Controllers
         }
 
 
-        // Haku nimellä
+        // Haku nimellä. Polku olisi https://localhost:5001/api/genret/hakusana
         [HttpGet]
         [Route("{key}")]
         public ActionResult GetGenresByName(string key)
@@ -84,7 +84,7 @@ namespace PeliRestApi.Controllers
         }
 
 
-        // Olemassaolevan pelin muokkaaminen
+        // Olemassaolevan genren muokkaaminen
         [HttpPut]
         [Route("{id}")]
         public ActionResult UpdateGenre(int id, [FromBody] Genret genre)
